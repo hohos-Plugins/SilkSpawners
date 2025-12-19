@@ -323,6 +323,7 @@ Unfortunately, I can't give access to https://repo.dustplanet.de/artifactory/pri
 mkdir -p BuildTools
 cd BuildTools
 wget -q https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+java -jar BuildTools.jar --rev 1.21.10 --remapped
 java -jar BuildTools.jar --rev 1.21.8 --remapped
 java -jar BuildTools.jar --rev 1.21.5 --remapped
 java -jar BuildTools.jar --rev 1.21.4 --remapped
@@ -342,6 +343,7 @@ java -jar BuildTools.jar --rev 1.16.5
 java -jar BuildTools.jar --rev 1.16.3
 java -jar BuildTools.jar --rev 1.16.1
 java -jar BuildTools.jar --rev 1.15.2
+java -jar BuildTools.jar --rev 1.14.4
 java -jar BuildTools.jar --rev 1.13.2
 java -jar BuildTools.jar --rev 1.12.2
 java -jar BuildTools.jar --rev 1.11.2

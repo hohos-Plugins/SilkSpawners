@@ -9,7 +9,7 @@
     <groupId>de.dustplanet</groupId>
     <artifactId>silkspawners-parent</artifactId>
     <version>8.3.1-SNAPSHOT</version>
-    <relativePath>../../</relativePath>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
 
   <repositories>
@@ -23,7 +23,7 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.21.8-R0.1-SNAPSHOT</version>
+      <version>1.21.10-R0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

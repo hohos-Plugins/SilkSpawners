@@ -41,7 +41,7 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.21.8-R0.1-SNAPSHOT</version>
+      <version>1.21.10-R0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.sk89q</groupId>
@@ -231,6 +231,11 @@
     <dependency>
       <groupId>de.dustplanet</groupId>
       <artifactId>silkspawners-v1_21_R5</artifactId>
+      <version>8.3.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>de.dustplanet</groupId>
+      <artifactId>silkspawners-v1_21_R6</artifactId>
       <version>8.3.1-SNAPSHOT</version>
     </dependency>
     <dependency>
