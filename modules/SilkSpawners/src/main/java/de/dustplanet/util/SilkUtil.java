@@ -44,6 +44,7 @@ import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
 import com.vdurmont.semver4j.Semver;
+import com.xcodiq.paper.util.HexUtil;
 
 import de.dustplanet.silkspawners.SilkSpawners;
 import de.dustplanet.silkspawners.compat.api.NMSProvider;
@@ -402,7 +403,7 @@ public class SilkUtil {
 
         if (!"Monster Spawner".equalsIgnoreCase(spawnerName)) {
             meta.setDisplayName(
-                    ChatColor.translateAlternateColorCodes('\u0026', spawnerName).replace("%creature%", getCreatureName(targetEntityID)));
+                    HexUtil.colorify(spawnerName.replace("%creature%", getCreatureName(targetEntityID))));
         }
 
         if ((forceLore || !isUsingReflection()) && plugin.getConfig().getBoolean("useMetadata", true)) {
@@ -619,8 +620,8 @@ public class SilkUtil {
         final ItemMeta meta = item.getItemMeta();
         // Case spawner and check if we should color
         if (item.getType() == nmsProvider.getSpawnerMaterial() && !correctedCustomName.equalsIgnoreCase("Monster Spawner")) {
-            meta.setDisplayName(ChatColor.translateAlternateColorCodes('\u0026', correctedCustomName).replace("%creature%",
-                    getCreatureName(correctedEntityID)));
+            meta.setDisplayName(HexUtil.colorify(correctedCustomName.replace("%creature%",
+                    getCreatureName(correctedEntityID))));
         }
 
         if (!isUsingReflection() && plugin.getConfig().getBoolean("useMetadata", true)) {
@@ -753,21 +754,21 @@ public class SilkUtil {
     @SuppressWarnings("deprecation")
     public void notify(final Player player, final String spawnerName) {
         if (isBarAPI()) {
-            final String shortInfo = ChatColor.translateAlternateColorCodes('\u0026',
+            final String shortInfo = HexUtil.colorify(
                     plugin.localization.getString("informationOfSpawnerBar").replace("%creature%", spawnerName));
             BarAPI.setMessage(player, shortInfo, plugin.getConfig().getInt("barAPI.displayTime", 3));
         } else if (isVanillaBossBar()) {
-            final String shortInfo = ChatColor.translateAlternateColorCodes('\u0026',
+            final String shortInfo = HexUtil.colorify(
                     plugin.localization.getString("informationOfSpawnerBar").replace("%creature%", spawnerName));
             final String barColor = plugin.getConfig().getString("vanillaBossBar.color", "RED");
             final String barStyle = plugin.getConfig().getString("vanillaBossBar.style", "SOLID");
             final int barTime = plugin.getConfig().getInt("vanillaBossBar.displayTime", 3);
             nmsProvider.displayBossBar(shortInfo, barColor, barStyle, player, plugin, barTime);
         } else {
-            sendMessage(player, ChatColor.translateAlternateColorCodes('\u0026',
-                    plugin.localization.getString("informationOfSpawner1").replace("%creature%", spawnerName)));
-            sendMessage(player, ChatColor.translateAlternateColorCodes('\u0026',
-                    plugin.localization.getString("informationOfSpawner2").replace("%creature%", spawnerName)));
+            sendMessage(player,
+                    plugin.localization.getString("informationOfSpawner1").replace("%creature%", spawnerName));
+            sendMessage(player,
+                    plugin.localization.getString("informationOfSpawner2").replace("%creature%", spawnerName));
         }
     }
 
@@ -900,10 +901,10 @@ public class SilkUtil {
      */
     public String getCustomSpawnerName(final String mobName) {
         if (plugin.mobs.contains("creatures." + mobName + ".spawnerName")) {
-            return ChatColor.translateAlternateColorCodes('&',
+            return HexUtil.colorify(
                     plugin.mobs.getString("creatures." + mobName + ".spawnerName", "Monster Spawner"));
         }
-        return ChatColor.translateAlternateColorCodes('&', plugin.localization.getString("spawnerName", "Monster Spawner"));
+        return HexUtil.colorify(plugin.localization.getString("spawnerName", "Monster Spawner"));
     }
 
     /**
@@ -917,7 +918,7 @@ public class SilkUtil {
         if (receiver == null || StringUtils.isBlank(messages)) {
             return;
         }
-        receiver.sendMessage(messages.split("\n"));
+        receiver.sendMessage(HexUtil.colorify(messages).split("\n"));
     }
 
     /**

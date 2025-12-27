@@ -33,6 +33,14 @@
   </repositories>
 
   <dependencies>
+    <!-- Framework Paper -->
+    <dependency>
+      <groupId>com.xcodiq.paper</groupId>
+      <artifactId>framework-paper</artifactId>
+      <version>1.0.2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/../../lib/framework-paper-1.0.2-all.jar</systemPath>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
